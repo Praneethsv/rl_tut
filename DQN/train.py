@@ -1,5 +1,6 @@
 from DQN import wrappers
 from DQN import DQN_model
+import DQN
 
 import argparse
 import time
@@ -99,8 +100,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     device = t.device("cuda" if args.cuda else "cpu")
 
-    env = wrappers.make_env(args.env)
-    net = DQN_model.DQN(env.observation_space.shape, env.action_space.n).to(device)
+    env = DQN.wrappers.make_env(args.env)
+    net = DQN.DQN_model.DQN(env.observation_space.shape, env.action_space.n).to(device)
     tgt_net = DQN_model.DQN(env.observation_space.shape, env.action_space.n).to(device)
     writer = SummaryWriter(comment="-" + args.env)
     print(net)
