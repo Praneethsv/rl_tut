@@ -5,7 +5,7 @@ import time
 from spinup.algos.sac import core
 from spinup.algos.sac.core import get_vars
 from spinup.utils.logx import EpochLogger
-
+import tensorflow as tf
 
 class ReplayBuffer:
     """
